@@ -1,0 +1,51 @@
+<!--register.html-->
+
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+
+<h1>Register</h1>
+
+<div class="panel panel-default col-sm-6">
+  <div class="panel-body">
+    <!--If there's an error, display the error-->
+    {{ if .ErrorTitle}}
+    <p class="bg-danger">
+      {{.ErrorTitle}}: {{.ErrorMessage}}
+    </p>
+    {{end}}
+    <!--Create a form that POSTs to the `/u/register` route-->
+    <form class="form" action="/u/register" method="POST">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+      </div>
+
+      <div class="form-group">
+        <label for="login">Login</label>
+        <input type="text" class="form-control" id="login" name="login" placeholder="Login">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+      </div>
+      
+      <div class="form-group">
+        <label for="password2">Confirm password</label>
+        <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm password">
+      </div>
+      
+      <div class="form-group">
+        <label for="token">Token</label>
+        <input type="text" name="token" class="form-control" id="token" placeholder="16 letters/numbers/symbols">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+</div>  
+
+    
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}

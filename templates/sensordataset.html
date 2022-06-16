@@ -1,0 +1,59 @@
+<!--index.html-->
+
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+
+<div class="container-fluid pb-3">
+  <div class="d-grid gap-3" style="grid-template-columns: 1fr;">
+    <div class="bg-light border rounded-3">
+      
+      {{ template "chart.html" .}}
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- Добавление стилей CSS через тег style. Таблицы с классом model_table будут иметь уникальный стиль -->
+  <!-- и будут использоваться только на текущей странице. В этом случае оправдано использование тега style -->
+  <style type="text/css">
+    .model_table {
+      margin: 50px;      
+      width: 80%;
+    }
+    .model_table tr:nth-child(even) {
+      background-color: #fffee9;
+    }
+    .model_table tr:hover {
+      background-color: #e7f7ff;
+    }
+  </style>
+
+
+<div class="container-fluid pb-3">
+  <div class="d-grid gap-3" style="grid-template-columns: 1fr;">
+    <div class="bg-light border rounded-3">
+      
+      <table class="model_table"> 
+        <tr>
+          <th colspan="2">Данные сенсора</th>
+        </tr>
+        <!--Loop over the `payload` variable, which is the list of articles-->
+        {{range .payload }}
+          <!--Display the content of the article-->
+          <tr>
+            <td>{{.Db_time}}</td>
+            <td>{{.Value}}</td>
+          </tr>
+        {{end}}
+      </table>
+
+    </div>
+  </div>
+</div>
+
+  
+
+
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}

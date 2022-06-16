@@ -1,0 +1,125 @@
+<!--index.html-->
+
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+
+<div id="rememberry__extension__root" style="all: unset;"></div>
+
+<link href="/static/bootstrap.css" rel="stylesheet">
+<link href="/static/bootstrap-datepicker4.min.css" rel="stylesheet">
+
+        <script>
+            window.kvDatepicker_44c07868 = {"autoclose":true,"format":"yyyy-mm-dd"};
+        </script>
+
+
+        <!-- Main Content Area -->
+        <style type="text/css">
+            .model_table {
+              margin: 30px;      
+              width: 90%;
+            }
+            .model_table tr:nth-child(even) {
+              background-color: #fffee9;
+            }
+            .model_table tr:hover {
+              background-color: #e7f7ff;
+            }
+        
+            .table-bord td,
+            .table-bord th {
+              border-color: #b8cccc;
+            }
+          </style>
+
+    <div class="container-fluid pb-3">
+        <div class="d-grid gap-3" style="grid-template-columns: 1fr;">
+            <div class="bg-light border rounded-3">
+
+
+            <form id="period-form" class="form-inline model_table" action="/hw/analytics" method="post">
+                <!-- <input type="hidden" name="_csrf-backend" value="uVgj5We6v9mC0Fzw9A_UW5aBCM_SOxN1ntRH7_zI1e3YG03XMv_Q682RMsGbXeEv0dZCgqFcawTIoh6Ar7ivuQ=="> -->
+                <div class="form-group">
+                    <div class="input-group">
+                        <!-- <div class="input-group-prepend d-none d-sm-flex">
+                            <div class="input-group-text">Period from</div>
+                        </div> -->
+                        <div id="w0-kvdate" class="input-group  input-daterange">
+                            <div class="input-group-prepend d-none d-sm-flex">
+                                <div class="input-group-text">From</div>
+                            </div>
+                            <input type="text" id="w0" class="form-control krajee-datepicker" name="dateFrom" value="2022-02-01" data-datepicker-source="w0-kvdate" data-datepicker-type="5" data-krajee-kvdatepicker="kvDatepicker_44c07868">
+                            <div class="input-group-append">
+                                <span class="input-group-text kv-field-seperator">to</span>
+                            </div>
+                            <input type="text" id="w0-2" class="form-control" name="dateTo" value="2022-02-03">
+
+                            <button type="submit" class="btn btn-primary ml-sm-3">Show</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pb-3">
+        <div class="d-grid gap-3" style="grid-template-columns: 1fr;">
+            <div class="bg-light border rounded-3">
+    
+                {{ template "chart.html" .}}
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/static/jquery.js"></script>
+    <script src="/static/bootstrap-datepicker.min.js"></script>
+    <script src="/static/datepicker-kv.min.js"></script>
+
+    <script>
+        jQuery(function ($) {
+            jQuery.fn.kvDatepicker.dates={};
+            jQuery&&jQuery.pjax&&(jQuery.pjax.defaults.maxCacheLength=0);
+            if (jQuery('#w0').data('kvDatepicker')) {
+                jQuery('#w0').kvDatepicker('destroy'); 
+            }
+            jQuery('#w0-kvdate').kvDatepicker(kvDatepicker_44c07868);
+    
+        // initDPRemove('w0', true);
+        // jQuery('#period-form').yiiActiveForm([], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+    
+        // Highcharts.setOptions({"time":{"timezoneOffset":new Date().getTimezoneOffset()}}); 
+        // new Highcharts.stockChart('analytics-chart', {"chart":{"renderTo":"analytics-chart","height":"500px","events":{"load":function() {
+        //                         var chart = this;
+        //                         chart.showLoading("Loading chart data...");
+                                
+        //                         $.getJSON("/cabinet/sensor/analytics/chart-data?id=228", function (data) {
+        //                             for (i in data.series) {
+        //                                 chart.addSeries(data.series[i]);
+        //                             }
+        //                             chart.rangeSelector.clickButton(data.range);
+        //                             chart.redraw();
+        //                             chart.hideLoading();
+        //                         });
+    
+        //                     }}},"loading":{"showDuration":300,"style":{"color":"#000000","opacity":0.75}},"rangeSelector":{"enabled":true,"inputEnabled":false,"buttons":[{"type":"hour","count":1,"text":"1h"},{"type":"hour","count":3,"text":"3h"},{"type":"hour","count":12,"text":"12h"},{"type":"day","count":1,"text":"1d"},{"type":"week","count":1,"text":"1w"},{"type":"month","count":1,"text":"1m"},{"type":"month","count":3,"text":"3m"},{"type":"month","count":6,"text":"6m"},{"type":"all","text":"All"}]},"legend":{"enabled":true},"xAxis":{"ordinal":false},"yAxis":[{"opposite":false},{"opposite":true}],"plotOptions":{"series":{"showInNavigator":true}},"tooltip":{"valueDecimals":2},"credits":{"enabled":false}
+        //                 });
+    
+        // jQuery('#w1').yiiGridView(
+        //     {"filterUrl":"\/cabinet\/sensor\/analytics\/228",
+        //     "filterSelector":"#w1-filters input, #w1-filters select",
+        //     "filterOnFocusOut":true});
+    
+            }
+        );
+        </script>
+    
+    <div id="rememberry__extension__root" style="all: unset;"></div>
+
+
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}

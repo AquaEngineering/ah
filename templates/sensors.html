@@ -1,0 +1,72 @@
+<!--index.html-->
+
+<!--Embed the header.html template at this location-->
+{{ template "header.html" .}}
+
+  <!-- Добавление стилей CSS через тег style. Таблицы с классом model_table будут иметь уникальный стиль -->
+  <!-- и будут использоваться только на текущей странице. В этом случае оправдано использование тега style -->
+  <style type="text/css">
+    .model_table {
+      margin: 30px;      
+      width: 70%;
+    }
+    .model_table tr:nth-child(even) {
+      background-color: #fffee9;
+    }
+    .model_table tr:hover {
+      background-color: #e7f7ff;
+    }
+
+    .table-bord td,
+    .table-bord th {
+      border-color: #b8cccc;
+    }
+  </style>
+
+
+<div class="container-fluid pb-3">
+  <div class="d-grid gap-3" style="grid-template-columns: 1fr;">
+    <div class="bg-light border rounded-3">
+
+        <div class="mt-3">
+          <h5  class="model_table">Список сенсоров устройства</h5>
+
+          <table class="model_table table-bordered table-bord"> 
+          <thead>
+            <tr>
+                <th>Название</th>
+                <th>Описание</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+          
+            {{range .payload }}
+
+              <tr>
+                <td><a href="/hw/sensordataset/{{.Id}}"> <h6>{{.Title}} </h6></a></td>
+                <td class="d-none d-md-table-cell">{{.Description}}</td>
+              </tr>  
+
+            {{end}}
+
+          </tbody>
+
+          <!-- <tr><th colspan="2"><h3>Список сенсоров устройства</h3></th></tr>
+          {{range .payload }}
+            <tr>
+              <td>
+                <a href="/hw/sensordataset/{{.Id}}"> <h4>{{.Title}} </h4></a>      
+              </td>
+              <td>{{.Description}}</td>
+            </tr>
+          {{end}} -->
+
+        </table>
+        </div>
+
+    </div>
+  </div>
+</div>
+<!--Embed the footer.html template at this location-->
+{{ template "footer.html" .}}
